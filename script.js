@@ -1,6 +1,7 @@
 // Define the array of tasks
 let taskArray = [];
 
+let tasks = [];
 // Event listener to check if enter key was pressed
 
 addEventListener('keypress',e=>{
@@ -28,7 +29,7 @@ function addTask(){
     let arraysConcatenated = storedTask.concat(taskArray);
 
     // Eliminates duplicates on the array of tasks
-    const tasks = arraysConcatenated.filter((item, pos) => arraysConcatenated.indexOf(item) === pos)
+    tasks = arraysConcatenated.filter((item, pos) => arraysConcatenated.indexOf(item) === pos)
     console.log(tasks);
 
     // Clean the text input and calls the function that prints the tasks
@@ -53,7 +54,7 @@ function cleanTasks(){
 function refreshTasks(){
 
     // Set the array of tasks to be saved on the Local Storage
-    let arrayStorage = localStorage.setItem("storage", JSON.stringify(taskArray));
+    let arrayStorage = localStorage.setItem("storage", JSON.stringify(tasks));
 
 }
 
