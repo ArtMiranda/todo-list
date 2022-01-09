@@ -8,9 +8,9 @@
     <title>To do List</title>
 </head>
 
-    <input type="text">
+    <input id="taskInput" onkeypress='checkEnter(event)' type="text">
     <button class="button" onclick="addTask()">Add task</button>
-    <button class="button" onclick="cleanTask()">Clean list</button>
+    <button class="button" onclick="cleanTasks()">Clean list</button>
 
     <h2>Tasks to complete</h2> 
 
