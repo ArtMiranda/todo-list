@@ -6,45 +6,48 @@ let tasks = [];
 addEventListener('keypress', e => {
     if (e.key == "Enter") {
 
-        addTask();
+        avoidBlank();
     }
 })
+
+function avoidBlank() {
+
+    // Define the HTML input and it's content
+    let taskInput = document.getElementById("taskInput");
+
+    if (taskInput.value != "") {
+        addTask();
+    }
+
+    else {
+        tasks.pop();
+        refreshTasks();
+    }
+}
 
 
 // Function that adds the written task to the array of tasks
 function addTask() {
 
+    // Adds the content of the input to the array of tasks
+    taskArrayFromInput.push(taskInput.value);
 
-    // Define the HTML input and it's content
-    let taskInput = document.getElementById("taskInput");
-    let taskContent = taskInput.value;
+    // Get the item from the Local Storage to a array
+    let storedTask = JSON.parse(localStorage.getItem("storage"));
 
-    if (taskInput.value != "") {
+    // Concatenates the array of tasks and the array of the Local Storage
+    let arraysConcatenated = storedTask.concat(taskArrayFromInput);
 
+    // Eliminates duplicates on the array of tasks
+    tasks = arraysConcatenated.filter((item, pos) => arraysConcatenated.indexOf(item) === pos)
 
-        // Adds the content of the input to the array of tasks
-        taskArrayFromInput.push(taskContent);
+    // Clean the text input and calls the function that prints the tasks
+    taskInput.value = "";
 
-
-        // Get the item from the Local Storage to a array
-        let storedTask = JSON.parse(localStorage.getItem("storage"));
-
-        // Concatenates the array of tasks and the array of the Local Storage
-        let arraysConcatenated = storedTask.concat(taskArrayFromInput);
-
-        // Eliminates duplicates on the array of tasks
-        tasks = arraysConcatenated.filter((item, pos) => arraysConcatenated.indexOf(item) === pos)
-        console.log(tasks);
-
-        // Clean the text input and calls the function that prints the tasks
-        taskInput.value = "";
-    }
-
-    else{
-        alert("Type a task!");
-    }
+    console.log(tasks);
 
     refreshTasks();
+
 }
 
 // Function that removes all the tasks of the array of tasks and from the Local Storage
@@ -65,14 +68,6 @@ function cleanTasks() {
 }
 
 // Function that prints the tasks on the HTML
-window.onload = function refreshTasks() {
-
-    // Set the array of tasks to be saved on the Local Storage
-    let arrayStorage = localStorage.setItem("storage", JSON.stringify(tasks));
-
-    tableList();
-}
-
 function refreshTasks() {
 
     // Set the array of tasks to be saved on the Local Storage
