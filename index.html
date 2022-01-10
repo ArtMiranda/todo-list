@@ -8,23 +8,26 @@
     <title>To do List</title>
 </head> 
     <body onload="avoidBlank()">
-
-    <input id="taskInput" type="text">
-    <button class="button" onclick="addTask()">Add task</button>
+    
+    <div class="app">
+    <h1 class="title">To do List</h1>
+    <input class="taskInput" id="taskInput" type="text">
+    <br>
+    <button class="button" id="buttonId" onclick="addTask()">Add task</button>
     <button class="button" onclick="removeTasks()">Clean list</button>
 
-    <h2>Tasks to complete</h2> 
+    <h2 class="subtitle">Tasks to complete</h2> 
 
     <div class="content">
-        <table border="1">
+        <table class="table">
             <thead>
                 <tr class="center">Tasks</tr>
             </thead>
             <tbody id="tbody">
-
             </tbody>
         </table>
     </div>
+</div>
     <script src="script.js"></script>
 </body>
 </html>
