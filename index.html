@@ -6,15 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>To do List</title>
-</head>
-
+</head> 
     <input id="taskInput" type="text">
     <button class="button" onclick="addTask()">Add task</button>
     <button class="button" onclick="cleanTasks()">Clean list</button>
 
     <h2>Tasks to complete</h2> 
 
+    <div class="content">
+        <table border="1">
+            <thead>
+                <tr class="center">Tasks</tr>
+            </thead>
+            <tbody id="tbody">
 
+            </tbody>
+        </table>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
