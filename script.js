@@ -10,18 +10,20 @@ addEventListener('keypress', e => {
     }
 })
 
+// Function that avoids blank inputs to be stored
 function avoidBlank() {
 
     // Define the HTML input and it's content
     let taskInput = document.getElementById("taskInput");
 
+    // Avoid the add of a empty value on the string when page loaded
     if (taskInput.value != "") {
         addTask();
     }
 
     else {
         tasks.pop();
-        refreshTasks();
+        conctenateTasks();
     }
 }
 
@@ -31,6 +33,13 @@ function addTask() {
 
     // Adds the content of the input to the array of tasks
     taskArrayFromInput.push(taskInput.value);
+
+    // Calls the function that concatenate the stored tasks to the new tasks
+    conctenateTasks();
+}
+
+// Function that concatenates the stored tasks to the new tasks 
+function conctenateTasks() {
 
     // Get the item from the Local Storage to a array
     let storedTask = JSON.parse(localStorage.getItem("storage"));
@@ -46,12 +55,13 @@ function addTask() {
 
     console.log(tasks);
 
-    refreshTasks();
+    // Calls the function that prints the tasks on the table
+    printTasks();
 
 }
 
 // Function that removes all the tasks of the array of tasks and from the Local Storage
-function cleanTasks() {
+function removeTasks() {
 
     // Cleans the array of tasks and the tasks Local Storage
     taskArrayFromInput = [];
@@ -62,21 +72,18 @@ function cleanTasks() {
 
     taskInput.value = "";
 
-    console.log("Tasks Cleaned");
+    alert("Tasks have been removed");
+
     // Calls the function that prints the tasks.
-    refreshTasks();
+    printTasks();
 }
 
-// Function that prints the tasks on the HTML
-function refreshTasks() {
+// Function that prints the tasks on the HTML table
+function printTasks() {
 
     // Set the array of tasks to be saved on the Local Storage
     let arrayStorage = localStorage.setItem("storage", JSON.stringify(tasks));
 
-    tableList();
-}
-
-function tableList() {
     // Define the table element
     let tbody = document.getElementById('tbody');
 
