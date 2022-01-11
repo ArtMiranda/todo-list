@@ -122,10 +122,16 @@ function printTasks() {
         let imgDelete = document.createElement("img");
         imgDelete.src = "./images/delete.png";
 
+        // imgDelete.addEventListener("click", "test()");
+
         // Adds a class to the image
         imgDelete.classList.add("deleteImage");
 
         // Insert the image in the row of actions
         tdDelete.appendChild(imgDelete);
     }
+}
+
+function test(){
+    alert("working");
 }
