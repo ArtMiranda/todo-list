@@ -10,6 +10,18 @@ addEventListener('keypress', e => {
     }
 })
 
+// Function that executes on the load of the page
+function onloadFunction() {
+
+    // Check if the variable storedTask exists to avoid reassignation
+    if(typeof storedTask != ""){
+        avoidBlank();
+    }
+    else{
+        let arrayStorage = localStorage.setItem("storage", JSON.stringify(tasks));
+    }
+}
+
 // Function that avoids blank inputs to be stored
 function avoidBlank() {
 
@@ -60,6 +72,7 @@ function conctenateTasks() {
 
 }
 
+
 // Function that removes all the tasks of the array of tasks and from the Local Storage
 function removeTasks() {
 
@@ -84,6 +97,7 @@ function printTasks() {
     // Set the array of tasks to be saved on the Local Storage
     let arrayStorage = localStorage.setItem("storage", JSON.stringify(tasks));
 
+
     // Define the table element
     let tbody = document.getElementById('tbody');
 
@@ -94,10 +108,24 @@ function printTasks() {
     for (let i = 0; i < tasks.length; i++) {
         let tr = tbody.insertRow();
 
-        let td_task = tr.insertCell();
+        // Insert the rows according to the number of tasks
+        let tdTask = tr.insertCell();
+        let tdDelete = tr.insertCell();
 
-        td_task.innerText = tasks[i];
+        // Define the content of the rows
+        tdTask.innerText = tasks[i];
+
+        // Adds a class to each row of task
+        tdTask.classList.add("taskContent");
+
+        // Add a image to create the delete function
+        let imgDelete = document.createElement("img");
+        imgDelete.src = "./images/delete.png";
+
+        // Adds a class to the image
+        imgDelete.classList.add("deleteImage");
+
+        // Insert the image in the row of actions
+        tdDelete.appendChild(imgDelete);
     }
 }
-
-
