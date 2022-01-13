@@ -1,4 +1,3 @@
-// Define the array of tasks
 let newTasks = [];
 let tasks = [];
 
@@ -58,10 +57,10 @@ function sumArrays() {
 function removeTasks() {
 
     let confirm = window.confirm("Do you want to remove all the tasks?")
-    if(confirm == true){ 
+    if (confirm == true) {
         newTasks = [];
         localStorage.clear();
-        storedTask = []; 
+        storedTask = [];
         tasks = [];
         taskInput.value = "";
 
@@ -81,6 +80,7 @@ function printTasks() {
 
     for (let i = 0; i < tasks.length; i++) {
         let tr = tbody.insertRow();
+        let tdCheck = tr.insertCell();
         let tdTask = tr.insertCell();
         let tdDelete = tr.insertCell();
 
@@ -92,11 +92,11 @@ function printTasks() {
         imgDelete.src = "./images/delete.png";
         imgDelete.addEventListener("click", e => {
             let confirm1 = window.confirm("Do you want to remove this task?");
-                if (confirm1 == true){
+            if (confirm1 == true) {
                 let del = e.target.parentElement.parentElement
                 console.log(del);
                 del.remove();
-    
+
                 tasks = tasks.filter(e => e !== del.innerText);
 
                 arrayStorage = localStorage.setItem("storage", JSON.stringify(tasks));
@@ -108,12 +108,8 @@ function printTasks() {
 
                 console.log(tasks);
                 console.log(storedTask)
-                }
+            }
         });
-
-        imgDelete.classList.add("deleteImage");
-        tdDelete.appendChild(imgDelete);
-
-
     }
+
 }
