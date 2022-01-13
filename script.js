@@ -104,6 +104,7 @@ function printTasks() {
                 arrayStorage = tasks;
                 taskStorage = tasks;
                 storedTask = tasks;
+                newTasks = tasks;
 
                 console.log(tasks);
                 console.log(storedTask)
