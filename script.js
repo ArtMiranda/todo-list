@@ -1,5 +1,5 @@
 // Define the array of tasks
-let taskArrayFromInput = [];
+let newTasks = [];
 let tasks = [];
 
 addEventListener('keypress', e => {
@@ -29,25 +29,25 @@ function avoidBlank() {
 
     else {
         tasks.pop();
-        conctenateTasks();
+        sumArrays();
     }
 
 }
 
 function addTask() {
 
-    taskArrayFromInput.push(taskInput.value);
+    newTasks.push(taskInput.value);
 
-    conctenateTasks();
+    sumArrays();
 
 }
 
 let storedTask = JSON.parse(localStorage.getItem("storage"));
 
-function conctenateTasks() {
+function sumArrays() {
 
-    let arraysConcatenated = storedTask.concat(taskArrayFromInput);
-    tasks = arraysConcatenated.filter((item, pos) => arraysConcatenated.indexOf(item) === pos)
+    let summedArrays = storedTask.concat(newTasks);
+    tasks = summedArrays.filter((item, pos) => summedArrays.indexOf(item) === pos);
     taskInput.value = "";
     console.log(tasks);
 
@@ -57,14 +57,17 @@ function conctenateTasks() {
 
 function removeTasks() {
 
-    taskArrayFromInput = [];
-    localStorage.clear();
-    storedTask = []; 
-    tasks = [];
-    taskInput.value = "";
-    alert("Tasks have been removed");
+    let confirm = window.confirm("Do you want to remove all the tasks?")
+    if(confirm == true){ 
+        newTasks = [];
+        localStorage.clear();
+        storedTask = []; 
+        tasks = [];
+        taskInput.value = "";
 
-    printTasks();
+        printTasks();
+    }
+
 }
 
 function printTasks() {
@@ -88,14 +91,23 @@ function printTasks() {
         let imgDelete = document.createElement("img");
         imgDelete.src = "./images/delete.png";
         imgDelete.addEventListener("click", e => {
-            let del = e.target.parentElement.parentElement
-            console.log(del);
-            del.remove();
+            let confirm1 = window.confirm("Do you want to remove this task?");
+                if (confirm1 == true){
+                let del = e.target.parentElement.parentElement
+                console.log(del);
+                del.remove();
+    
+                tasks = tasks.filter(e => e !== del.innerText);
 
-            tasks = tasks.filter(e => e !== del.innerText);
+                arrayStorage = localStorage.setItem("storage", JSON.stringify(tasks));
 
-            console.log(tasks);
-            console.log(storedTask);
+                arrayStorage = tasks;
+                taskStorage = tasks;
+                storedTask = tasks;
+
+                console.log(tasks);
+                console.log(storedTask)
+                }
         });
 
         imgDelete.classList.add("deleteImage");
