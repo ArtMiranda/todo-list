@@ -89,6 +89,14 @@ function printTasks() {
 
         tdTask.classList.add("taskContent");
 
+
+        // Consigo colocar riscado porém não consigo armazenar esse dado no localStorage
+        tr.addEventListener("click", e => {
+        let a = tdTask.parentNode;
+        let b = a.innerText;
+        a.classList.add("done");
+    });
+    
         let imgDelete = document.createElement("img");
         imgDelete.src = "./images/delete.png";
         imgDelete.addEventListener("click", e => {
@@ -110,6 +118,5 @@ function printTasks() {
         });
         imgDelete.classList.add("deleteImage");
         tdDelete.appendChild(imgDelete);
-    }
-
+    }   
 }

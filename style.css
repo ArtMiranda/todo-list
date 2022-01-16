@@ -34,6 +34,7 @@
 }
 
 .buttonAdd{
+    font-weight: bold;
     display: inline-block;
     border: 1px outset rgb(53, 106, 6);
     background-color: rgb(25, 158, 25);
@@ -58,6 +59,7 @@
  }
 
  .buttonClear{
+    font-weight: bold;
     display: inline-block;
     border: 1px outset rgb(116, 31, 16);
     background-color: rgb(216, 68, 24);
@@ -109,9 +111,12 @@
     border-radius: 50%;
     float: right;
     margin-right:10px;
-
 }
 
-tdTask{
-    background-color: black;
+td.parentElement:hover{
+    background-color: red;
+}
+
+.done{
+    text-decoration: line-through;
 }
