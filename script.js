@@ -90,10 +90,8 @@ function printTasks() {
         tdTask.classList.add("taskContent");
 
         let imgDelete = document.createElement("img");
-        imgDelete.src = "./images/delete7.png";
+        imgDelete.src = "./images/delete.png";
         imgDelete.addEventListener("click", e => {
-            let confirm1 = window.confirm("Do you want to remove this task?");
-            if (confirm1 == true) {
                 let del = e.target.parentElement.parentElement
                 console.log(del);
                 del.remove();
@@ -109,9 +107,6 @@ function printTasks() {
 
                 console.log(tasks);
                 console.log(storedTask)
-            }
-            
-    
         });
         imgDelete.classList.add("deleteImage");
         tdDelete.appendChild(imgDelete);
