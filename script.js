@@ -45,11 +45,13 @@ let storedTask = JSON.parse(localStorage.getItem("storage"));
 
 function sumArrays() {
 
+    if (storedTask !== ""){  
     let summedArrays = storedTask.concat(newTasks);
     tasks = summedArrays.filter((item, pos) => summedArrays.indexOf(item) === pos);
     taskInput.value = "";
     console.log(tasks);
-
+    }
+  
     printTasks();
 
 }
@@ -80,7 +82,6 @@ function printTasks() {
 
     for (let i = 0; i < tasks.length; i++) {
         let tr = tbody.insertRow();
-        let tdCheck = tr.insertCell();
         let tdTask = tr.insertCell();
         let tdDelete = tr.insertCell();
 
@@ -89,7 +90,7 @@ function printTasks() {
         tdTask.classList.add("taskContent");
 
         let imgDelete = document.createElement("img");
-        imgDelete.src = "./images/delete.png";
+        imgDelete.src = "./images/delete7.png";
         imgDelete.addEventListener("click", e => {
             let confirm1 = window.confirm("Do you want to remove this task?");
             if (confirm1 == true) {
@@ -109,7 +110,11 @@ function printTasks() {
                 console.log(tasks);
                 console.log(storedTask)
             }
+            
+    
         });
+        imgDelete.classList.add("deleteImage");
+        tdDelete.appendChild(imgDelete);
     }
 
 }

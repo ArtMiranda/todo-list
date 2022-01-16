@@ -12,17 +12,16 @@
     <div class="app">
     <h1 class="title">To do List</h1>
     <input class="taskInput" id="taskInput" type="text">
-    <br>
-    <button class="button" id="buttonId" onclick="avoidBlank()">Add task</button>
-    <button class="button" onclick="removeTasks()">Clean list</button>
+    <button class="buttonAdd" id="buttonId" onclick="avoidBlank()">+</button>
+    <button class="buttonClear" onclick="removeTasks()">X</button>
     <link rel="shortcut icon" type="image/png" href="images/todo.png"/>    
     <h2 class="subtitle">Tasks</h2> 
 
     <div class="content">
         <table class="table">
             <thead>
-                <th class="center">Tasks</th>
-                <th class="center">Action</th>
+                <th class="center"></th>
+                <th class="center"></th>
             </thead>
             <tbody id="tbody">
             </tbody>
