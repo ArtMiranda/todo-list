@@ -33,6 +33,16 @@
 
 }
 
+.inputDiv{
+    display: inline-block;
+}
+
+.buttons{
+    display: inline-block;
+    width: 90px;
+    height: 90px;
+}
+
 .buttonAdd{
     font-weight: bold;
     display: inline-block;
@@ -43,7 +53,6 @@
     cursor:pointer;
     color:white;
     border-radius: 5px;
-
     border: none;
     text-align: center;
     font-size: 25px;
@@ -67,11 +76,7 @@
     width:40px;
     cursor:pointer;
     color:white;
-    font-size: 25px;
-    text-align: center;
     border-radius: 5px;
-    justify-content: center;
-
     border: none;
     text-align: center;
     font-size: 25px;
@@ -119,4 +124,54 @@ td.parentElement:hover{
 
 .done{
     text-decoration: line-through;
+}
+
+@media screen and (max-width: 520px){
+    .app{
+        width: 350px;
+        margin: auto;
+    }
+    .table{
+        margin: auto;
+        width: 350px;
+    }
+    .taskInput {
+        width: 325px;
+    } 
+      .buttons{
+          display:block;
+          text-align: center;
+          margin: auto;
+      }
+      .inputDiv{
+          text-align: center;
+      }
+}
+
+@media screen and (max-width: 370px){
+    .app{
+        width: 300px;
+        margin: auto;
+    }
+    .table{
+        margin: auto;
+        width: 300px;
+    }
+    .taskInput {
+        width: 280px;
+    } 
+}
+
+@media screen and (max-width: 300px){
+    .app{
+        width: 250px;
+        margin: auto;
+    }
+    .table{
+        margin: auto;
+        width: 250px;
+    }
+    .taskInput {
+        width: 225px;
+    } 
 }
