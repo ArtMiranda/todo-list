@@ -70,11 +70,14 @@ function removeTasks() {
 
     let confirm = window.confirm("Do you want to remove all the tasks?")
     if (confirm == true) {
-        newTasks = [];
         localStorage.clear();
+        newTasks = [];
         storedTask = [];
         tasks = [];
+        summedArrays = [];
         taskInput.value = "";
+
+        sumArrays();
 
         printTasks();
     }
