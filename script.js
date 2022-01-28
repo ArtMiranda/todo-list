@@ -1,5 +1,7 @@
 let newTasks = [];
 let tasks = [];
+let storedTask = []; 
+let summedArrays = [];
 
 addEventListener('keypress', e => {
     if (e.key == "Enter") {
@@ -10,7 +12,7 @@ addEventListener('keypress', e => {
 
 function onloadFunction() {
 
-    if (typeof storedTask !== "") {
+    if (storedTask !== "") {
         avoidBlank();
     }
     else {
@@ -33,24 +35,32 @@ function avoidBlank() {
 
 }
 
+// console.log(tasks);
+
 function addTask() {
 
+    if(taskInput.value == "clear"){
+        removeTasks();
+    }
+    
     newTasks.push(taskInput.value);
 
     sumArrays();
 
 }
 
-let storedTask = JSON.parse(localStorage.getItem("storage"));
+storedTask = JSON.parse(localStorage.getItem("storage"));
 
 function sumArrays() {
 
-    if (storedTask !== ""){  
-    let summedArrays = storedTask.concat(newTasks);
-    tasks = summedArrays.filter((item, pos) => summedArrays.indexOf(item) === pos);
-    taskInput.value = "";
-    console.log(tasks);
+    if (storedTask !== null){  
+    summedArrays = storedTask.concat(newTasks);
     }
+    else{
+        summedArrays = newTasks;
+    }
+    tasks = summedArrays.filter((item, pos) => summedArrays.indexOf(item) === pos);
+    taskInput.value = "";    
   
     printTasks();
 
@@ -73,6 +83,7 @@ function removeTasks() {
 
 function printTasks() {
 
+
     let arrayStorage = localStorage.setItem("storage", JSON.stringify(tasks));
 
 
@@ -86,22 +97,12 @@ function printTasks() {
         let tdDelete = tr.insertCell();
 
         tdTask.innerText = tasks[i];
-
         tdTask.classList.add("taskContent");
 
-
-        // Consigo colocar riscado porém não consigo armazenar esse dado no localStorage
-        tr.addEventListener("click", e => {
-        let a = tdTask.parentNode;
-        let b = a.innerText;
-        a.classList.add("done");
-    });
-    
         let imgDelete = document.createElement("img");
         imgDelete.src = "./images/delete.png";
         imgDelete.addEventListener("click", e => {
-                let del = e.target.parentElement.parentElement
-                console.log(del);
+                let del = e.target.parentElement.parentElement;
                 del.remove();
 
                 tasks = tasks.filter(e => e !== del.innerText);
@@ -112,9 +113,6 @@ function printTasks() {
                 taskStorage = tasks;
                 storedTask = tasks;
                 newTasks = tasks;
-
-                console.log(tasks);
-                console.log(storedTask)
         });
         imgDelete.classList.add("deleteImage");
         tdDelete.appendChild(imgDelete);
