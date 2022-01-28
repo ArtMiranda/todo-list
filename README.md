@@ -6,3 +6,4 @@ A simple To Do list to pratice Data persistance concepts on JavaScript.
 - [x] CSS
 - [x] JavaScript
 
+https://artmiranda.github.io/todo-list/
